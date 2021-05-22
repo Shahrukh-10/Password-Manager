@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+
+<body>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} container-fluid alert-dismissible fade show" role="alert">
+  <strong>Message : </strong>{{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+    <div class= "container mt-5">
+    <div class="card">
+        <div class="card-header">
+           <h3> Welcome {{username}} </h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">All your password are protected.</h5>
+            <p class="card-text">Passwords are encrypted by the AES128 algorithm before they are stored in the directory and are retrieved as part of an entry in the original clear format. Passwords are encrypted by the AES192 algorithm before they are stored in the directory and are retrieved as part of an entry in the original clear format.</p>
+            <a href="/mypasswords" class="btn btn-primary">Show my Password</a>
+        </div>
+    </div>
+    <h2 class="text-center mt-4">Add Password</h2>
+    <hr class="col-md-6 col-lg-6 col-sm-6 container">
+    <div class="col-md-6 col-lg-6 col-sm-6 mt-3 container">
+    <form action="/password" method="POST">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Password</button>
+</form>
+    
+</div>
+
+
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
